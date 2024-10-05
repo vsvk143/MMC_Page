@@ -4,6 +4,7 @@ let totalAmount = 0;
 let idliTotal = 0;
 let dosaTotal = 0;
 let maggiTotal = 0;
+const backendWebServiceUrl = 'https://backend-web-service-yn3n.onrender.com/';
 
 // New data structure to store user names and their selected items
 const userSelections = [];
@@ -267,7 +268,7 @@ function addWinner(userName, wonItem) {
 
 // Fetch all items from the server and display them
 function fetchItems() {
-    fetch('http://localhost:8080/api/items') // Ensure the correct API endpoint
+    fetch(`${backendWebServiceUrl}api/items`) // Ensure the correct API endpoint
         .then(response => response.json())
         .then(items => {
             const itemsContainer = document.getElementById('items');
@@ -291,7 +292,7 @@ function fetchItems() {
 // Add a new item to the server
 function addNewItem(name, price, isVeg) {
     const newItem = { name, price, veg: isVeg };
-    fetch('/api/items', {
+    fetch(`${backendWebServiceUrl}api/items`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -309,7 +310,7 @@ function addNewItem(name, price, isVeg) {
 // Update an existing item on the server
 function updateItem(id, name, price, isVeg) {
     const updatedItem = { name, price, veg: isVeg };
-    fetch(`/api/items/${id}`, {
+    fetch(`${backendWebServiceUrl}api/items/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -326,7 +327,7 @@ function updateItem(id, name, price, isVeg) {
 
 // Delete an item from the server
 function deleteItem(id) {
-    fetch(`/api/items/${id}`, {
+    fetch(`${backendWebServiceUrl}api/items/${id}`, {
         method: 'DELETE'
     })
     .then(() => {
@@ -346,7 +347,7 @@ window.onload = function() {
 
 // Fetch all winners from the server and display them
 function fetchWinners() {
-    fetch('http://localhost:8080/api/winners') // Updated port
+    fetch(`${backendWebServiceUrl}api/winners`) // Updated port
         .then(response => response.json())
         .then(winners => {
             const winnersList = document.getElementById('winners');
@@ -363,7 +364,7 @@ function fetchWinners() {
 // Add a new winner to the server
 function addNewWinner(name, item) {
     const newWinner = { userName: name, wonItem: item };
-    fetch('http://localhost:8080/api/winners', { // Ensure this URL is correct
+    fetch(`${backendWebServiceUrl}api/winners`, { // Ensure this URL is correct
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
