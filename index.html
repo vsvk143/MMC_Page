@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>MANA MIDDLE CLASS CHAI AND FOOD BITE</h1>
+    <input type="text" id="searchInput" oninput="searchItems()" placeholder="Search items...">
+    <div id="items"></div>
+
+    <div class="selected-list">
+        <h2>Selected Items</h2>
+        <ul id="selectedItems"></ul>
+        <div class="total-amount">Total Amount: ₹<span id="totalAmount">0</span></div>
+    </div>
+
+    <div id="overlay"></div>
+
+    <div id="spinOption">
+        <span class="close" onclick="closeCongratsNotification()">&times;</span>
+        <h2>Congratulations!</h2>
+        <p>You are eligible to play</p>
+        <button id="spinButton">Ready</button>
+        <input type="text" id="userNameInput" placeholder="Enter your name" style="display: none;" required>
+        <button id="submitNameButton" style="display: none;">Submit</button>
+    </div>
+
+    <div id="notEligibleMessage" class="hidden">
+        <p>You are not eligible to play the game.</p>
+    </div>
+
+    <button id="checkEligibilityButton">Check Eligibility</button>
+    <a href="terms.html" target="_blank" id="termsLink">Terms and Conditions</a>
+
+    <div id="termsModal" class="hidden">
+        <div class="terms-conditions">
+            <h2>Terms and Conditions for the "Bill 150+ Dosa Game"</h2>
+            <h3>Eligibility to Participate:</h3>
+            <p>The game is open to all customers who make a bill of ₹150 or more at our restaurant. The bill can include individual items or any combination of Dosa, Idly, or Maggi.</p>
+            // ... rest of the terms and conditions ...
+            <button onclick="closeTermsModal()">Close</button>
+        </div>
+    </div>
+
+    <div id="spinPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <span class="close" onclick="closeSpinPopup()">&times;</span>
+            <h2>Play the Game</h2>
+            <div id="card" class="card">
+                <img id="cardImage" src="images/Plain_Dosa.jpg" alt="Dosa">
+            </div>
+            <button onclick="startCardAnimation()">Start</button>
+            <div id="selectedItemName" class="large-text"></div>
+            <div id="confetti"></div>
+        </div>
+    </div>
+    <script src="venky.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+    <div class="winners-list">
+        <h2>Winners</h2>
+        <ul id="winners"></ul>
+        <!-- Example entry -->
+            <!-- <li><span class="winner-name">John Doe</span> won <span class="winner-item">Masala Dosa</span></li> -->
+        </ul>
+    </div>
+</body>
+</html>
